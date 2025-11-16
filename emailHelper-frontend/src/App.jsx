@@ -63,6 +63,7 @@ function App() {
             multiline
             rows={2}
             fullWidth
+            required
             variant="outlined"
             value={emailContent}
             onChange={(e) => setEmailContent(e.target.value)}
@@ -98,7 +99,12 @@ function App() {
          
         </Box>
       
-      <Button variant="contained"  {...(loading && { loading: true })}onClick={handleSubmit}>Generate</Button>
+      <Box sx={{ display: 'flex', gap: 2 }}>
+        <Button variant="contained"  {...(loading && { loading: true })}onClick={handleSubmit}>Generate</Button>
+
+      <Button variant='outlined' onClick={()=> navigator.clipboard.write(emailResponse)}>Copy to Clipboard</Button>
+      </Box>
+      
       </Container>
 
     </>
